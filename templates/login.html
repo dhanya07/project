@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block content %}
+<form method="post" action="{% url 'loginaction' %}" class="form-login" >
+{% csrf_token %}
+<h2 class="form-login-heading">Sign in Now</h2>
+<div class="login-wrap">
+<table>
+<tr>
+
+<td><input type="text" name="txtusername" id="txtusername" class="form-control" placeholder="Username" autofocus/></td></tr>
+
+<tr>
+<td><br><input type="password" name="txtpassword" id="txtpassword" class="form-control" placeholder="Password" autofocus/></td></tr>
+
+<tr><td><br><input type="submit" name="btnsave" id="btnsave" value="Login" class="btn btn-theme btn-block"/>
+</div>
+</td></tr>
+<tr><td><br>{% if msg %}
+{{msg}}
+{% endif %}</td></tr>
+</form>
+</table>
+{% endblock %}

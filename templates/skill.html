@@ -1,0 +1,14 @@
+{% extends 'index1.html' %}
+{% block content %}
+<form method="post" action="{% url 'skillaction' %}" class="form-login">
+{% csrf_token %}
+<table>
+<h2>Add skill</h2>
+<tr><br><th>Skill</th>
+<td><input type="text" name="txtskill" id="txtskill" class="form-control"/></td></tr>
+<tr><th><br><input type="submit" name"btnsave" id="btnsave" value="add" class="btn btn-theme btn-block"/></th></tr>
+</table><tr><th>{% if msg %}
+{{msg}}
+{% endif %}</th></tr>
+</form>
+{% endblock %}

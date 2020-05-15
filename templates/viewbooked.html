@@ -1,0 +1,33 @@
+
+{% extends 'index3.html' %}
+{% block content %}
+<table>
+<table class="table table-bordered table-striped table-condensed">
+<h2>Booked details</h2>
+{% if data %}
+<tr>
+<th>Name</th>
+<th>DOB</th>
+<th>Gender</th>
+<th>Location</th>
+<th>Image</th>
+<th>Phone no</th>
+<th>Time</th></tr>
+
+{% for v in data %}
+<tr>
+<td>{{v.educatorid.name}}</td>
+<td>{{v.educatorid.dob}}</td>
+<td>{{v.educatorid.gender}}</td>
+<td>{{v.educatorid.location}}</td>
+<td><img src="{{v.educatorid.image.url}}" alt="no image" height="100px" width="100px" /></td>
+<td>{{v.educatorid.phoneno}}</td>
+<td>{{v.time}}</td>
+
+</tr>
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+</table>
+{% endblock %}

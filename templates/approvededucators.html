@@ -1,0 +1,41 @@
+<html>
+<body>
+<table>
+<table class="table table-bordered table-striped table-condensed">
+{% if data %}
+
+<tr><th>Name</th>
+<th>Date of Birth</th>
+<th>Gender</th>
+<th>Phone no</th>
+<th>Location</th>
+<th>Qualification</th>
+<th>skills</th>
+<th>Experience</th>
+<th>Certification</th>
+<th>Phone no</th>
+<th>Per hour charge</th>
+<th>Available time</th>
+<th>Image</th></tr>
+{% for v in data %}
+<tr><td>{{v.name}}</td>
+<td>{{v.dob}}</td>
+<td>{{v.gender}}</td>
+<td>{{v.phoneno}}</td>
+<td>{{v.location}}</td>
+<td>{{v.qualification}}</td>
+<td>{{v.skills}}</td>
+<td>{{v.experience}}</td>
+<td>{{v.certification}}</td>
+<td>{{v.phoneno}}</td>
+<td>{{v.charge}}</td>
+<td>{{v.availabletime}}</td>
+<td><img src="{{v.image.url}}" alt="no image" height=100px" width="100px"/></td>
+</tr>
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+</table>
+</body>
+</html>

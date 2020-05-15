@@ -1,0 +1,14 @@
+{% extends 'index1.html' %}
+{% block content %}
+<form method="post" action="{% url 'timeaction' %}" class="form-login" >
+{% csrf_token %}
+<table>
+<h2>Add time</h2>
+<tr><br><th>Time</th>
+<td><input type="text" name="txttime" id="txttime" class="form-control"/></td></tr>
+<tr><th><br><input type="submit" name"btnsave" id="btnsave" value="add"class="btn btn-theme btn-block"/></th></tr>
+<tr><th>{% if msg %}
+{{msg}}
+{% endif %}</th></tr>
+</table>
+</form>{% endblock %}

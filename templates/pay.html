@@ -1,0 +1,50 @@
+
+{% extends 'index3.html' %}
+{% block content %}
+{% load static %}
+<head>
+<script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$('#txthrs').change(function(){
+hrs=$('#txthrs').val();
+charge=$('#txtcharge').val()
+tot=hrs*charge;
+$('#txttot').val(tot);
+
+});
+});
+</script>
+</head>
+<body>
+<form method="post" action="{% url 'payaction' %}" class="form-login">
+{% csrf_token %}
+<table>
+{% if data %}
+{% for v in data %}
+<tr>
+
+<td><input type="hidden" name="txtid" id="txtid" value="{{v.id}}" class="form-control"></td></tr>
+
+<td><br><input type="hidden" name="txttime" id="txttime" value="{{v.educatorid.availabletime_id}}" class="form-control"></td></tr>
+<tr><th><br>Name</th>
+<td><br><input type="text" name="txtid" id="txtid" value="{{v.educatorid.name}}" class="form-control"/></td></tr>
+<tr><th><br>Phone no</th>
+<td><br><input type="text" name="txtid" id="txtid" value="{{v.educatorid.phoneno}}" class="form-control"/></td></tr>
+<tr><th><br>Payment</th>
+<td><br><input type="text" name="txtpay" id="txtpay" value="{{v.userid.payment}}" class="form-control"/></td></tr>
+<tr><th><br>Per hour charge</th>
+<td><br><input type="text" name="txtcharge" id="txtcharge" value="{{v.educatorid.charge}}" class="form-control"/></td></tr>
+
+<tr><th><br>Enter hours that u need</th>
+<td><br><input type="text" name="txthrs" id="txthrs" class="form-control" /></td></tr>
+<tr><th><br>Total amount</th>
+<td><br><input type="text" readonly="True" name="txttot" id="txttot" class="form-control"/></td></tr>
+<tr><td><br><input type="submit" name="btnsave" id="btnsave" value="pay" class="btn btn-theme btn-block"/></td></tr>
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+
+</table>
+{% endblock %}

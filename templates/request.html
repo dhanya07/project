@@ -1,0 +1,42 @@
+{% extends 'index2.html' %}
+{% block content %}
+<form method="post" action="{% url 'acceptaction' %}" >
+{% csrf_token %}
+
+<table>
+
+<h2>Accept Users</h2>
+{% if data %}
+{% for v in data %}
+<tr>
+<td><input type="hidden" name="txtid" id="txtid" value="{{v.id}}"/></td>
+<td><input type="hidden" name="txttime" id="txttime" value="{{v.time}}"/></td></tr>
+
+<td><input type="hidden" name="txtskill" id="txtskill" value="{{v.skill}}"/></td></tr>
+<tr><th><br>Name</th>
+<td><input type="text name="txtname" id="txtname" value="{{v.name}}" class="form-control"/></td></tr>
+<tr><th><br>Date of birth</th>
+<td><input type="text name="txtname" id="txtname" value="{{v.dob}}" class="form-control"/></td></tr>
+<tr><th><br>Location</th>
+<td><input type="text name="txtloc" id="txtloc" value="{{v.location}}" class="form-control"/></td></tr>
+<tr><th><br>Gender</th>
+<td><input type="radio" name="radgender" id="radgender" value="Male" {% ifequal v.gender "Male" %} checked="checked" {% endifequal %}/>M
+<input type="radio" name="radgender" id="radgender" value="Female" {% ifequal v.gender "Female" %} checked="checked" {% endifequal %}/>F
+</td></tr>
+<tr><th><br>Contact no</th>
+<td><input type="text" name="txtno" id="txtno" value="{{v.contactno}}" class="form-control"/></td></tr>
+<tr><th><br>Email </th>
+<td><input type="text" name="txtmail" id="txtmail" value="{{v.email}}" class="form-control"/></td></tr>
+<tr><th><br>Payment Details</th>
+<td><input type="text" name="txtpay" id="txtpay" value="{{v.payment}}" class="form-control"/></td></tr>
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+<tr><th><br><input type="submit" name="btnsave" id="btnsave" value="Accept" class="btn btn-theme btn-block"/></th</tr>
+<tr><th>{%  if msg %}
+{{msg}}
+{% endif %}</th></tr>
+</form>
+</table>
+{% endblock %}

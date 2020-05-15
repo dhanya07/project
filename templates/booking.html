@@ -1,0 +1,31 @@
+{% extends 'index3.html' %}
+{% block content %}
+<table>
+<h2>Pay educators</h2>
+<table class="table table-bordered table-striped table-condensed">
+{% if data %}
+<tr>
+<th>Name</th>
+<th>Phone no</th>
+<th>Per hour charge</th>          
+</tr>
+{% for v in data %}
+<tr>
+<td>{{v.educatorid.name}}</td>
+<td>{{v.educatorid.phoneno}}</td>
+<td>{{v.educatorid.charge}}</td>
+<td><input type="hidden" name="txtid" id="txtid" value="{{v.id}}"></td>
+<td><input type="hidden" name="txttime" id="txttime" value="{{v.educatorid.availabletime_id}}"></td>
+
+
+<td><a href="{% url 'pay' v.id %}">Pay online</a></td>
+
+
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+</td></tr>
+
+</table>
+{% endblock %}

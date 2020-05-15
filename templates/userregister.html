@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+<form method="post" action="{% url 'userregisteraction' %}" >
+{% csrf_token %}
+<table>
+<h2>Register</h2>
+<tr><th><br>Name</th>
+<td><input type="text" name="txtname" id="txtname" class="form-control"/></td></tr>
+<tr><th><br>Date of Birth</th>
+<td><input type="date" name="txtdate" id="txtdate" class="form-control"/> </td></tr>
+<tr><th><br>Location</th>
+<td><input type="text" name="txtloc" id="txtloc" class="form-control"/></td></tr>
+<tr><th><br>Email</th>
+<td><input type="text" name="txtmail" id="txtmail" class="form-control"/></td></tr>
+<tr><th><br>Gender</th>
+<td><input type="radio" name="radgender" id="radgender" value="Male"/>M
+<input type="radio" name="radgender" id="radgender" value="Female"/>F</td></tr>
+<tr><th><br>Contact no:</th>
+<td><input type="text" name="txtno" id="txtno" class="form-control"/></td<tr>
+<tr><th><br>Skill you want to learn</th>
+<td><select name="ddskill" id="ddskill" class="form-control">
+<option value="00">Select</option>
+{% for v in skill %}
+<option value="{{v.id}}">{{v.skill}}</option>
+{% endfor %}</select></td></tr>
+<tr><th><br>Payment details</th>
+<td><input type="text" name="txtpay" id="txtpay" class="form-control"/></td><tr>
+<tr><th><br>Userame</th>
+
+<td><input type="text" name="txtusername" id="txtusername" class="form-control"/></td></tr>
+<tr><th><br>Password</th>
+<td><input type="password" name="txtpassword" id="txtpassword" class="form-control"/>
+</td></tr><tr><td><br><input type="submit" name="btnsave" id="btnsave" value="save" class="btn btn-theme btn-block"/></td></tr>
+<tr><td>{% if msg %}
+{{msg}}
+{% endif %}</td></tr>
+
+{% endblock %}

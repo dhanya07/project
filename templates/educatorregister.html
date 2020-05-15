@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form method="post" action="{% url 'educatorregisteraction' %}" enctype="multipart/form-data" >
+{% csrf_token %}
+<table>
+<h2> Register</h2>
+<tr><th><br>Name</th>
+<td><input type="text" name="txtname" id="txtname" class="form-control"</td></tr>
+<tr><th><br>Date of Birth</th>
+<td><input type="date" name="txtdate" id="txtdate" class="form-control"</td></tr>
+<tr><th><br>Gender</th>
+<td><input type="radio" name="radgender" id="radgender" value="Male"/>M
+<input type="radio" name="radgender" id="radgender" value="Female" />F</td></tr>
+<tr><th><br>Phone no:</th>
+<td><input type="text" name="txtno" id="txtno" class="form-control"/></td<tr>
+<tr><th><br>Location</th>
+<td><input type="text" name="txtloc" id="txtloc" class="form-control"/></td></tr>
+<tr><th><br>Qualification</th>
+<td><input type="text" name="txtqua" id="txtqua" class="form-control"/>
+<tr><th><br>Skills</th>
+<td><select name="ddskill" id="ddskill" class="form-control">
+<option value="00">Select</option>
+{% for v in skill %}
+<option value="{{v.id}}">{{v.skill}}</option>
+{% endfor %}</select></td></tr>
+
+<tr><th><br>Expeience</th>
+<td><input type="text" name="txtexp" id="txtexp" class="form-control"/>
+</td></tr>
+<tr><th><br>Certification</th>
+
+<td><input type="text" name="txtcert" id="txtcert" class="form-control"/></td></tr>
+
+<tr><th><br>per hour charge</th>
+
+<td><input type="text" name="txtcharge" id="txtcharge" class="form-control"/></td></tr>
+<tr><th><br>Available time</th>
+<td><select name="ddtime" id="ddtime" class="form-control">
+<option value="00">select</option>
+{% for v in time %}
+<option value="{{v.id}}">{{v.time}}</option>
+{% endfor %}
+</select>
+</td></tr>
+<tr><th><br>Image</th>
+<td><input type="file" name="upload" id="upload" />
+</td></tr>
+<tr><th>Userame</th>
+
+<td><input type="text" name="txtusername" id="txtusername" class="form-control"/></td></tr>
+<tr><th>Password</th>
+<td><input type="password" name="txtpassword" id="txtpassword" class="form-control"/>
+</td></tr>
+<tr> <td><input type="submit" name="btnsave" id="btnsave" value="save" class="btn btn-theme btn-block"</td></tr>
+<tr><td>{% if msg %}
+{{msg}}
+{% endif %}</td><tr>
+</form>
+</table>
+{% endblock %}

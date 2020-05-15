@@ -1,0 +1,16 @@
+<html>
+<body>
+<table>
+{% for v in data %}
+<tr><th>Name</th>
+<td>{{v.name}}</td</tr>
+<tr><th>Experience</th>
+<td>{{v.experience}}</td></tr>
+<tr><th>Certification</th>
+<td>{{v.certification}}</td></tr>
+<tr><th>Image</th>
+<td><img src="{{v.image.url}}" alt="no-image" width="100px" height="100px"/></td></tr>
+{% endfor %}
+</table>
+</body>
+</html>

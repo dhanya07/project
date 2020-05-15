@@ -1,0 +1,42 @@
+{% extends 'index1.html' %}
+{% block content %}
+<table>
+<h2>Accept educators</h2>
+<table class="table table-bordered table-striped table-condensed">
+<br>{% if data %}
+<tr><th>Name</th>
+<th>Date of Birth</th>
+<th>Gender</th>
+<th>Phone no</th>
+<th>Place</th>
+<th>Qualification</th>
+<th>skills</th>
+<th>Experience</th>
+<th>Certification</th>
+
+<th>Per hour charge</th>
+<th>Available time</th>
+<th>Image</th>
+<th>Status</th></tr>
+{% for v in data %}
+<tr><td>{{v.name}}</td>
+<td>{{v.dob}}</td>
+<td>{{v.gender}}</td>
+<td>{{v.phoneno}}</td>
+<td>{{v.location}}</td>
+<td>{{v.qualification}}</td>
+<td>{{v.skills}}</td>
+<td>{{v.experience}}</td>
+<td>{{v.certification}}</td>
+
+<td>{{v.charge}}</td>
+<td>{{v.availabletime}}</td>
+<td><img src="{{v.image.url}}" alt="no image" height="100px" width="100px" /></td>
+<td>{{v.status}}</td>
+<td><a href="{% url 'approve' v.id %}">Approve</a></td>
+
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+{% endblock %}

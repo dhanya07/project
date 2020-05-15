@@ -1,0 +1,32 @@
+{% extends 'index2.html' %}
+{% block content %}
+<table>
+<h2>Accepted list </h2>
+<table class="table table-bordered table-striped table-condensed">
+
+{% if data %}
+<tr>
+<th>Name</th>
+<th>DOB</th>
+<th>Location</th>
+<th>Gender</th>
+<th>Contact no</th>
+<th>Email</th>
+<th>Payment Details</th></tr>
+
+{% for v in data %}
+<tr>
+<td>{{v.userid.name}}</td>
+<td>{{v.userid.dob}}</td>
+<td>{{v.userid.location}}</td>
+<td>{{v.userid.gender}}</td>
+<td>{{v.userid.contactno}}</td>
+<td>{{v.userid.email}}</td>
+
+<td>{{v.userid.payment}}</td>
+{% endfor %}
+{% else %}
+list is empty
+{% endif %}
+</table>
+{% endblock %}
